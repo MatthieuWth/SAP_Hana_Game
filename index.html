@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Gamedev Canvas Workshop</title>
+        <style>
+            * { padding: 0; margin: 0; }
+            canvas { background: #eee; display: block; margin: 0 auto; }
+            #USERS {margin-top: 10px}
+        </style>
+    </head>
+    <body onload="startGame()">
+        <img id="user1" width="0" height="0" src="./user1.png" alt="The Scream">
+        <img id="user2" width="0" height="0" src="./user2.png" alt="The Scream">
+        <img id="hana" width="0" height="0" src="./sap_hana.png" alt="The Scream">
+        <img id="user3" width="0" height="0" src="./user4.png" alt="The Scream">
+
+
+        <canvas id="DB" width="480" height="400"></canvas>
+        <canvas id="USERS" width="450" height="150"></canvas>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="tools.js"></script>
+        <script src="classUser.js"></script>
+        <script src="classDb.js"></script>
+        <script src="fillUser.js"></script>
+        <script src="fillDb.js"></script>
+
+        <script>
+            var WIDTH_WINDOW = $("#USERS").offset().left;
+            var TOP_USERS = document.getElementById('USERS').offsetTop;
+            var TOP_DB = document.getElementById('DB').offsetTop;
+            var myUsers = new Array(3);
+            var myDb = new Array(9);
+            var nbUsers = 0;
+            var nbDb = 0;
+            var COLORS = { "#89B87F": 0,
+                          "#703FB7": 0,
+                          "#DEB856": 0,
+                          "#3B3BD5": 0,
+                          "#D64259": 0,
+                          "#9A0CB0": 0,
+                          "#5F7F47": 0,
+                          "#E56640": 0,
+                          "#8A2336": 0,
+                          "#140C2C": 0
+                         };
+
+            var NbProfiles = 2;
+
+            SIZE = 50
+            fillUser();
+            fillDb();
+            displayArray();
+
+            function startGame() {
+                setInterval(happenUser,1000);
+
+            }
+
+        </script>
+    </body>
+</html>
