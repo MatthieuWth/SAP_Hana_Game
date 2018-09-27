@@ -9,3 +9,4 @@ To run the game :
     - Clone this repository
        - Open web page with the URL of the repository where you cloned the game.
 
+![Alt text](screenshot.png?raw=true "Title")
