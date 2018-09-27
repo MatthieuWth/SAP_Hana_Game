@@ -6,7 +6,7 @@ class User {
         var ctx = canvas.getContext("2d");
         this.ctx = ctx;
         ctx.beginPath();
-        ctx.rect(left, topSquare, 50, 50);
+        ctx.rect(left, topSquare, SIZE, SIZE);
         ctx.fillStyle = "#eee";
         ctx.fill();
         ctx.closePath();
@@ -37,28 +37,29 @@ function animationKillUser(ctx, user) {
 }
 
 function deleteUser(user) {
+    if (user.up == false) {return;}
     var canvas = document.getElementById("USERS");
     var ctx = canvas.getContext("2d");
     ctx.beginPath();
-    ctx.rect(user.x, user.y, 50, 50);
+    ctx.rect(user.x, user.y, SIZE, SIZE);
     ctx.fillStyle = "#eee";
-    animationKillUser(ctx, user)
+    // animationKillUser(ctx, user)
     ctx.fill();
     ctx.closePath();
     user.up = false;
     user.db.nbUser -= 1;
+    COLORS[user.color] -= 1;
     user.db = null;
+    nbUsers -= 1;
 }
 
 var canvas = document.getElementById("USERS");
 
 
 function isIntersect(point, user) {
-    if ((point.x - user.x) > 0 && (point.x - user.x) < 50) {
-        if ((point.y - user.y) > 0 && (point.y - user.y) < 50) {
+    if ((point.x - user.x) > 0 && (point.x - user.x) < SIZE) {
+        if ((point.y - user.y) > 0 && (point.y - user.y) < SIZE) {
             deleteUser(user);
-            COLORS[user.color] -= 1;
-            console.log("true color :" + user.color);
             return true
         }
     }

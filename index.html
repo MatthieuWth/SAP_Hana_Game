@@ -7,6 +7,9 @@
             * { padding: 0; margin: 0; }
             canvas { background: #eee; display: block; margin: 0 auto; }
             #USERS {margin-top: 10px}
+            .scores {width: 100%; margin: 20px 0 0 auto;}
+            #SCOREUSER {float: left; margin-left:10px;}
+            #SCOREDB {float: left;}
         </style>
     </head>
     <body onload="startGame()">
@@ -18,6 +21,11 @@
 
         <canvas id="DB" width="480" height="400"></canvas>
         <canvas id="USERS" width="450" height="150"></canvas>
+
+        <div class="scores">
+            <canvas id="SCOREUSER" width="150" height="50"></canvas>
+        </div>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="tools.js"></script>
         <script src="classUser.js"></script>
@@ -29,10 +37,15 @@
             var WIDTH_WINDOW = $("#USERS").offset().left;
             var TOP_USERS = document.getElementById('USERS').offsetTop;
             var TOP_DB = document.getElementById('DB').offsetTop;
+            var TOP_SCORES = document.getElementById('SCOREUSER').offsetTop;
+            var LEFT_SCORES = document.getElementById('SCOREUSER').offsetLeft;
             var myUsers = new Array(3);
             var myDb = new Array(9);
+            var beginDate = new Date().getTime();
             var nbUsers = 0;
             var nbDb = 0;
+            var SIZE = 50
+            var score = 0;
             var COLORS = { "#89B87F": 0,
                           "#703FB7": 0,
                           "#DEB856": 0,
@@ -45,16 +58,16 @@
                           "#140C2C": 0
                          };
 
-            var NbProfiles = 2;
 
-            SIZE = 50
-            fillUser();
-            fillDb();
+
             displayArray();
 
-            function startGame() {
-                setInterval(happenUser,1000);
 
+            function startGame() {
+                fillUser();
+                fillDb();
+                setInterval(test,1200);
+                setInterval(getScore,1000);
             }
 
         </script>

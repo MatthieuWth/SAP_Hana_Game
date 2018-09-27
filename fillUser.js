@@ -9,6 +9,7 @@ function fillUser() {
             nbUsers += 1;
         }
     }
+    nbUsers = 0
 }
 
 function getEmptySpace() {
@@ -34,11 +35,24 @@ function getRandomDb() {
         changeColorDb(myDb[0], getRandomColor())
         return 0
     }
-    var x = Math.floor((Math.random() * nbDb));
+    var x = Math.floor((Math.random() * 9));
     while (myDb[x].up == false) {
         var x = Math.floor((Math.random() * myDb.length));
     }
     return x
+}
+
+function test() {
+    var x = 1
+
+    if (score > 10) { x = 2; }
+    if (score > 50) { x = 3; }
+    for (i = 0; i < x; i +=1) {
+        happenUser()
+    }
+    if (nbUsers == 27 || nbDb == 9) {
+        alert("Game ended !! Your final score is: " + score)
+    }
 }
 
 
@@ -74,4 +88,5 @@ function changeColor(user, color, db) {
     user.color = color;
     user.up = true;
     user.db = db;
+    nbUsers += 1;
 }

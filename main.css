@@ -48,6 +48,10 @@ img {
     max-width: 95%;
 }
 
+.scores {
+    margin-top: 40px;
+}
+
 @keyframes colorize {
     0% {
         -webkit-filter: grayscale(100%);

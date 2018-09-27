@@ -16,7 +16,7 @@ class Db {
 
 
 function deleteDb(db) {
-     if (COLORS[db.color] > 0) {
+     if (COLORS[db.color] > 0 || db.up == false) {
         return ;
     }
     var canvas = document.getElementById("DB");
@@ -33,10 +33,9 @@ function deleteDb(db) {
 var canvas = document.getElementById("DB");
 
 function isIntersectDb(point, db) {
-    if ((point.x - db.x) > 30 && (point.x - db.x) < 430) {
+    if ((point.x - db.x) > 0 && (point.x - db.x) < 420) {
         if ((point.y - db.y) > 0 && (point.y - db.y) < 40) {
             deleteDb(db);
-            console.log("true =>" + COLORS[db.color]);
             return true
         }
     }
@@ -47,7 +46,7 @@ function isIntersectDb(point, db) {
 canvas.addEventListener('click', (e) => {
     var found = 0;
     const pos = {
-        x: e.clientX,
+        x: e.clientX - WIDTH_WINDOW + 30,
         y: e.clientY - TOP_DB
     };
     for (var i = 0; i < 9; i++) {
